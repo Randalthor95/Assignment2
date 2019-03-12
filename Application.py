@@ -25,4 +25,6 @@ infect_node_zero = 2
 cure_node_zero = 500
 cure_p = .5
 
-gm.make_graphs(nodes, edges, seed, watts_p, infect_p, infect_node_zero, cure_node_zero, cure_p)
+times_to_run = 5
+
+gm.make_graphs(nodes, edges, seed, watts_p, infect_p, infect_node_zero, cure_node_zero, cure_p, times_to_run)

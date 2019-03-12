@@ -33,7 +33,6 @@ def simulate_cure(file, p, p_prime, infected_node_zero, cure_node_zero):
         return AssertionError('infected node zero cannot be the same as cure node zero')
 
     G = gm.make_graph_from_file(file, True, True)
-    print(nx.is_connected(G))
     G.nodes[infected_node_zero]['infected'] = True
     G.nodes[cure_node_zero]['cured'] = True
 
@@ -63,7 +62,6 @@ def simulate_cure(file, p, p_prime, infected_node_zero, cure_node_zero):
                     current_infected_count +=1
         infected_per_round.append(infected_this_round_count)
         total_ever_infected.append(ever_infected_count)
-        print('ever_infected_count: ' + str(ever_infected_count))
 
         cured_nodes = []
         for i, node in enumerate(G):
@@ -83,6 +81,5 @@ def simulate_cure(file, p, p_prime, infected_node_zero, cure_node_zero):
         cured_per_round.append(cured_this_round_count)
         total_cured.append(cured_count)
         total_current_infected.append(current_infected_count)
-        print('cured_count: ' + str(cured_count))
 
     return [infected_per_round, total_ever_infected, total_current_infected, cured_per_round, total_cured]
