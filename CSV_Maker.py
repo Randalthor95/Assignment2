@@ -1,3 +1,4 @@
+from scipy import stats
 def make_csv_from_infection(file, lists):
     f = open(file + '_infected_per_round.csv', 'a')
     separator = ', '
@@ -51,3 +52,22 @@ def read_csv(file):
             lines.append([int(n) for n in line.split(',')])
 
     return lines
+
+
+def read_csv_and_flatten(file):
+    lines = []
+    with open(file) as f:
+        for line in f:
+            temp_list = [int(n) for n in line.split(',')]
+            for entry in temp_list:
+                lines.append(entry)
+
+    return lines
+
+
+def t_test_from_files(file1, file2):
+    values1 = read_csv_and_flatten(file1)
+    print(values1)
+    values2 = read_csv_and_flatten(file2)
+    print(values2)
+    return stats.ttest_ind(values1, values2)
